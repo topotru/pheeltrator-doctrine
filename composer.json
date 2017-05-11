@@ -1,0 +1,26 @@
+{
+  "name": "topotru/pheeltrator-doctrine",
+  "description": "pheeltrator-doctrine",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "topot",
+      "email": "topotru@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "TopoTrue\\Pheeltrator\\": "src/Pheeltrator/"
+    }
+  },
+  "require": {
+    "doctrine/dbal": "v2.5.12",
+    "topotru/pheeltrator": "dev-test"
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/topotru/pheeltrator"
+    }
+  ]
+}
