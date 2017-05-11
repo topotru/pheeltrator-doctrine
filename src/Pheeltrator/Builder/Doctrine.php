@@ -8,8 +8,6 @@
 
 namespace TopoTrue\Pheeltrator\Query\Builder;
 
-
-
 use Doctrine\DBAL\Query\QueryBuilder;
 use TopoTrue\Pheeltrator\Query\Source\Join;
 
