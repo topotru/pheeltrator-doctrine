@@ -95,6 +95,22 @@ class Doctrine implements BuilderInterface
     }
     
     /**
+     * @param string $cond
+     * @param array $bindParams
+     * @param array $bindTypes
+     * @return mixed
+     */
+    public function andHaving($cond, $bindParams = null, $bindTypes = null)
+    {
+        $this->builder->andHaving($cond);
+        if (is_array($bindParams) && $bindParams) {
+            $this->binds = array_merge($this->binds, $bindParams);
+        }
+        return $this;
+    }
+    
+    
+    /**
      * @param array $binds
      * @return mixed
      */
@@ -161,5 +177,16 @@ class Doctrine implements BuilderInterface
         $this->builder->groupBy($groupBy);
         return $this;
     }
+    
+    /**
+     * @param string $groupBy
+     * @return BuilderInterface
+     */
+    public function addGroupBy($groupBy)
+    {
+        $this->builder->addGroupBy($groupBy);
+        return $this;
+    }
+    
 }
 
