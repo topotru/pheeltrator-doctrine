@@ -124,7 +124,7 @@ class Doctrine implements BuilderInterface
             $this->builder->setParameters($this->binds);
         }
         //print_r($this->binds);
-        //die($this->builder->getSQL());
+        //echo "{$this->builder->getSQL()}\n\n";
         $stmt = $this->builder->execute();
         
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
@@ -140,6 +140,7 @@ class Doctrine implements BuilderInterface
         if ($this->binds) {
             $this->builder->setParameters($this->binds);
         }
+        //echo "{$this->builder->getSQL()}\n\n";
         $stmt = $this->builder->execute();
         
         return $stmt->rowCount() > 1 ? $stmt->rowCount() : (int)$stmt->fetchColumn();
