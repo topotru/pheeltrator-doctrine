@@ -28,6 +28,11 @@ class Doctrine implements BuilderInterface
     protected $binds = [];
     
     /**
+     * @var array
+     */
+    protected $types = [];
+    
+    /**
      * DoctrinePheeltratorBuilder constructor.
      * @param QueryBuilder $builder
      */
@@ -58,6 +63,7 @@ class Doctrine implements BuilderInterface
     }
     
     /**
+     * @param string $from
      * @param string $source
      * @param string $conditions
      * @param string $alias
@@ -91,6 +97,9 @@ class Doctrine implements BuilderInterface
         if (is_array($bindParams) && $bindParams) {
             $this->binds = array_merge($this->binds, $bindParams);
         }
+        if (is_array($bindTypes) && $bindTypes) {
+            $this->types = array_merge($this->types, $bindTypes);
+        }
         return $this;
     }
     
@@ -109,22 +118,25 @@ class Doctrine implements BuilderInterface
         return $this;
     }
     
-    
     /**
      * @param array $binds
+     * @param array $types
      * @return mixed
      */
-    public function execute(array $binds = [])
+    public function execute(array $binds = [], array $types = [])
     {
         if (is_array($binds) && $binds) {
             $this->binds = array_merge($this->binds, $binds);
         }
         
-        if ($this->binds) {
-            $this->builder->setParameters($this->binds);
+        if (is_array($types) && $types) {
+            $this->types = array_merge($this->types, $types);
         }
-        //print_r($this->binds);
-        //echo "{$this->builder->getSQL()}\n\n";
+        
+        if ($this->binds) {
+            $this->builder->setParameters($this->binds, $this->types);
+        }
+        
         $stmt = $this->builder->execute();
         
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
@@ -138,9 +150,9 @@ class Doctrine implements BuilderInterface
     {
         $this->builder->select("COUNT({$field})");
         if ($this->binds) {
-            $this->builder->setParameters($this->binds);
+            $this->builder->setParameters($this->binds, $this->types);
         }
-        //echo "{$this->builder->getSQL()}\n\n";
+        
         $stmt = $this->builder->execute();
         
         return $stmt->rowCount() > 1 ? $stmt->rowCount() : (int)$stmt->fetchColumn();
