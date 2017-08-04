@@ -486,7 +486,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/topotru/pheeltrator",
-                "reference": "b6e0c04876a42e11d14d6693461ba6e860672df0"
+                "reference": "9b790b7fd5e8f7fd66e54f4ebe1cf1bbef4aae8d"
             },
             "type": "library",
             "autoload": {
@@ -504,7 +504,7 @@
                 }
             ],
             "description": "pheeltrator",
-            "time": "2017-08-03 16:55:51"
+            "time": "2017-08-04 18:34:32"
         }
     ],
     "packages-dev": [],
