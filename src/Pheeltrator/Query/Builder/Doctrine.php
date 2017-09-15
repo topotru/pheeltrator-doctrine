@@ -201,5 +201,39 @@ class Doctrine implements BuilderInterface
         return $this;
     }
     
+    /**
+     * @return string
+     */
+    public function getSQL()
+    {
+        return $this->builder->getSQL();
+    }
+    
+    /**
+     * @return string
+     */
+    public function getQueryBasicPart()
+    {
+        $sql = $this->getSQL();
+        
+        if (false !== $pos1 = stripos($sql, 'FROM ')) {
+            $sql = substr($sql, $pos1);
+        }
+        
+        if (false !== $pos2 = stripos($sql, 'ORDER BY')) {
+            $sql = substr($sql, 0, $pos2);
+        }
+        
+        return trim($sql);
+    }
+    
+    /**
+     * @return array
+     */
+    public function getParameters()
+    {
+        return $this->builder->getParameters();
+    }
+    
 }
 
