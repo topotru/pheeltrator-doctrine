@@ -14,7 +14,7 @@
     }
   },
   "require": {
-    "doctrine/dbal": "v2.5.12",
+    "doctrine/dbal": "~2.5",
     "topotru/pheeltrator": "dev-next"
   },
   "repositories": [
