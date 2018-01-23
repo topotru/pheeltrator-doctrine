@@ -89,7 +89,7 @@ class Doctrine implements BuilderInterface
      * @param string $cond
      * @param array $bindParams
      * @param array $bindTypes
-     * @return mixed
+     * @return BuilderInterface
      */
     public function andWhere($cond, $bindParams = null, $bindTypes = null)
     {
@@ -107,7 +107,7 @@ class Doctrine implements BuilderInterface
      * @param string $cond
      * @param array $bindParams
      * @param array $bindTypes
-     * @return mixed
+     * @return BuilderInterface
      */
     public function andHaving($cond, $bindParams = null, $bindTypes = null)
     {
@@ -121,7 +121,7 @@ class Doctrine implements BuilderInterface
     /**
      * @param array $binds
      * @param array $types
-     * @return mixed
+     * @return array
      */
     public function execute(array $binds = [], array $types = [])
     {
