@@ -15,7 +15,8 @@
   },
   "require": {
     "doctrine/dbal": "^2.5",
-    "topotru/pheeltrator": "dev-rc-1"
+    "topotru/pheeltrator": "dev-rc-1",
+    "ext-pdo": "*"
   },
   "repositories": [
     {
