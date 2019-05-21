@@ -14,8 +14,8 @@
     }
   },
   "require": {
-    "doctrine/dbal": "v2.5.12",
-    "topotru/pheeltrator": "dev-test"
+    "doctrine/dbal": "^2.5",
+    "topotru/pheeltrator": "dev-rc-1"
   },
   "repositories": [
     {
